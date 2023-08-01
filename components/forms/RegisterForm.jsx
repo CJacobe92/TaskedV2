@@ -1,10 +1,12 @@
 'use client'
 import React, { useState } from 'react'
 import { signIn, useSession } from "next-auth/react";
+import { useRouter } from 'next/navigation';
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({email:'', password:'', password_confirmation: ''})
   const { data: session } = useSession()
+  const router = useRouter()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
