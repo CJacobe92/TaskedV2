@@ -8,13 +8,22 @@ const RegisterForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await signIn('register', {
-      email: formData.email,
-      password: formData.password,
-      password_confirmation: formData.password,
-      callbackUrl: '/dashboard'
-    })
-    console.log(session)
+    try {
+      const response = await signIn('login', {
+        email: formData.email,
+        password: formData.password,
+        password_confirmation: formData.password_confirmation,
+        redirect: false
+      })
+
+      if (response) { 
+        router.push('/dashboard')
+      } else {
+        console.log('Login failed')
+      }
+    } catch (error) {
+      console.error(error.message)
+    }
   }
   
   return (

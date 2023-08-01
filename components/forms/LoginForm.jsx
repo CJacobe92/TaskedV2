@@ -1,17 +1,29 @@
 'use client'
 import React, { useState } from 'react'
 import { signIn, useSession } from "next-auth/react";
+import { useRouter } from 'next/navigation';
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({email:'', password:''})
+  const router = useRouter()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await signIn('login', {
-      email: formData.email,
-      password: formData.password,
-      callbackUrl: '/dashboard'
-    })
+    try {
+      const response = await signIn('login', {
+        email: formData.email,
+        password: formData.password,
+        redirect: false
+      })
+
+      if (response) { 
+        router.push('/dashboard')
+      } else {
+        console.log('Login failed')
+      }
+    } catch (error) {
+      console.error(error.message)
+    }
   }
   
   return (
