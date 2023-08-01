@@ -18,8 +18,9 @@ const RegisterForm = () => {
         redirect: false
       })
 
-      if (!response.error) { 
+      if (!response.error && session.user) { 
         router.push('/dashboard')
+        console.log('Login success')
       } else {
         console.log('Login failed')
       }
