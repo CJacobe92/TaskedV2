@@ -4,8 +4,7 @@ import axios from "axios";
 
 const handler = NextAuth({
     pages: {
-        signIN: '/login',
-        register: '/register'
+        signIn: '/login'
     },
     session: {strategy: 'jwt'},
     providers:[
