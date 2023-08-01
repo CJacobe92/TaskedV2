@@ -10,7 +10,7 @@ const LoginForm = () => {
     await signIn('login', {
       email: formData.email,
       password: formData.password,
-      callbackUrl: `${window.location.origin}/dashboard`
+      callbackUrl: '/dashboard'
     })
   }
   

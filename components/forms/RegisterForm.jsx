@@ -12,7 +12,7 @@ const RegisterForm = () => {
       email: formData.email,
       password: formData.password,
       password_confirmation: formData.password,
-      callbackUrl: `${window.location.origin}/dashboard`
+      callbackUrl: '/dashboard'
     })
     console.log(session)
   }
