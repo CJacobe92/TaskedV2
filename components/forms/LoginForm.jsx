@@ -14,11 +14,10 @@ const LoginForm = () => {
       const response = await signIn('login', {
         email: formData.email,
         password: formData.password,
-        redirect: false
+        callbackUrl: '/dashboard'
       })
 
       if (!response.error && session.user) { 
-        router.push('/dashboard')
         console.log('Login successful')
       } else {
         console.log('Login failed')
