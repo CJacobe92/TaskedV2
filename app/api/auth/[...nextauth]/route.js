@@ -12,7 +12,8 @@ const handler = NextAuth({
             id: 'login',
             name: 'credentials',
             authorize: async(credentials) => {
-                const baseURL = `http://localhost:3000/api/v1/auth`
+                // const baseURL = "http://localhost:3000/api/v1/auth"
+                const baseURL = "https://plannerapi.onrender.com/api/v1/auth"
                 const payload = {
                     email: credentials.email,
                     password: credentials.password
@@ -34,7 +35,8 @@ const handler = NextAuth({
             id: 'register',
             name: 'credentials',
             authorize: async(credentials) => {
-                const baseURL = `http://localhost:3000/api/v1/users`
+                // const baseURL = `http://localhost:3000/api/v1/users`
+                const baseURL = "https://plannerapi.onrender.com/api/v1/auth"
                 const payload = {
                     email: credentials.email,
                     password: credentials.password,
