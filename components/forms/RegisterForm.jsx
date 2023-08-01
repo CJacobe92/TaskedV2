@@ -11,15 +11,14 @@ const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await signIn('login', {
+      await signIn('login', {
         email: formData.email,
         password: formData.password,
         password_confirmation: formData.password_confirmation,
-        redirect: false
+        callbackUrl: '/dashboard'
       })
 
       if (!response.error && session.user) { 
-        router.push('/dashboard')
         console.log('Login success')
       } else {
         console.log('Login failed')
