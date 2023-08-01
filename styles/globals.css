@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+*, *::before, *::after{
+    @apply p-0 m-0 box-border
+}
+
+.mainPage{
+    @apply min-h-screen w-[100%] flex justify-center items-center
+}
+
+.mainForm{
+    @apply flex flex-col justify-center items-center
+}
+
+.mainForm__group{
+    @apply flex flex-col w-full m-2 w-72
+}
+
+.mainForm__group label{
+    @apply text-sm
+}
+
+.mainForm__group input {
+    @apply w-full p-2 border border-black border-opacity-30 rounded-sm text-sm
+}
+
+.mainForm__group button{
+    @apply w-full bg-orange-700 text-white p-2
+}
+
