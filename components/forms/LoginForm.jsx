@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 const LoginForm = () => {
   const [formData, setFormData] = useState({email:'', password:''})
   const router = useRouter()
+  const { data: session } = useSession();
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -16,8 +17,9 @@ const LoginForm = () => {
         redirect: false
       })
 
-      if (!response.error) { 
+      if (!response.error && session.user) { 
         router.push('/dashboard')
+        console.log('Login successful')
       } else {
         console.log('Login failed')
       }
