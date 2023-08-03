@@ -16,11 +16,11 @@
 }
 
 .mainForm__group{
-    @apply flex flex-col w-full m-2 w-72
+    @apply flex flex-col w-full m-2 w-72 items-center justify-center
 }
 
 .mainForm__group label{
-    @apply text-sm
+    @apply text-sm w-full text-left
 }
 
 .mainForm__group input {
@@ -31,3 +31,22 @@
     @apply w-full bg-orange-700 text-white p-2
 }
 
+.mainForm__title{
+    @apply text-xl font-bold text-orange-700 m-2
+}
+
+.mainForm__pitch{
+    @apply text-2xl font-bold text-gray-700 m-1
+}
+
+.mainForm__link{
+    @apply text-xs font-semibold m-2 text-gray-600
+}
+
+.privacy__terms{
+    @apply text-xs text-center text-gray-600
+}
+
+.task__btn{
+    @apply m-2 text-xs text-gray-600
+}
