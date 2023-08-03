@@ -3,7 +3,7 @@ export const fetchUserData = async(session) => {
     try {
         const id = session.user.uid
         const token = session.user.token
-        const baseURL = `${process.env.API_URL}/users/${id}`
+        const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/users/${id}`
         const requestOption = {
             method: 'GET',
             headers: {
@@ -30,7 +30,7 @@ export const fetchCreateTask = async(session, formData, category_id) => {
     try {
         const id = session.user.uid
         const token = session.user.token
-        const baseURL = `${process.env.API_URL}/users/${id}/categories/${category_id}/tasks`
+        const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/users/${id}/categories/${category_id}/tasks`
         console.log(baseURL)
         const requestOption = {
             method: 'POST',
@@ -57,7 +57,7 @@ export const fetchUpdateTask = async(session, formData, category_id, task_id) =>
     try {
         const id = session.user.uid
         const token = session.user.token
-        const baseURL = `${process.env.API_URL}/users/${id}/categories/${category_id}/tasks/${task_id}`
+        const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/users/${id}/categories/${category_id}/tasks/${task_id}`
         console.log(baseURL)
         const requestOption = {
             method: 'PATCH',
@@ -84,7 +84,7 @@ export const fetchDeleteTask = async(session, category_id, task_id) => {
     try {
         const id = session.user.uid
         const token = session.user.token
-        const baseURL = `${process.env.API_URL}/users/${id}/categories/${category_id}/tasks/${task_id}`
+        const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/users/${id}/categories/${category_id}/tasks/${task_id}`
         console.log(baseURL)
         const requestOption = {
             method: 'DELETE',
