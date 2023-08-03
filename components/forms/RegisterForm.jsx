@@ -1,17 +1,17 @@
 'use client'
 import React, { useState } from 'react'
-import { signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({email:'', password:'', password_confirmation: ''})
-  const { data: session } = useSession()
   const router = useRouter()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await signIn('login', {
+      const response = await signIn('register', {
         email: formData.email,
         password: formData.password,
         password_confirmation: formData.password_confirmation,
@@ -19,7 +19,8 @@ const RegisterForm = () => {
       })
 
       if (!response.error) { 
-        router.push('/dashboard')
+        console.log('Login success')
+        router.push('/timeline')
       } else {
         console.error(response.error)
       }
@@ -30,6 +31,11 @@ const RegisterForm = () => {
   
   return (
     <form onSubmit={handleSubmit} className='mainForm'>
+      <div className='mainForm__group'>
+        <h1 className='mainForm__title'>Tasked!</h1>
+        <p className='mainForm__pitch'>Sign up for an account</p>
+        <p className='mainForm__link'>Already have an account? <Link href={'/login'} className='text-orange-700'>Login</Link></p>
+      </div>
       <div className='mainForm__group'>
         <label htmlFor="email">Email</label>
         <input 
@@ -48,7 +54,6 @@ const RegisterForm = () => {
           name="password" 
           id="password" />
       </div>
-
       <div className='mainForm__group'>
         <label htmlFor="password">Confirm Password</label>
         <input
@@ -59,7 +64,10 @@ const RegisterForm = () => {
           id="password_confirmation" />
       </div>
       <div className='mainForm__group'>
-        <button type='submit'>Sign in</button>
+        <button type='submit'>Register</button>
+      </div>
+      <div className='mainForm__group'>
+        <p className='privacy__terms'>By signing up you agree with our privacy terms and conditions.</p>
       </div>
     </form>
   )

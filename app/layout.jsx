@@ -1,3 +1,4 @@
+import GlobalContextProvider, { GlobalContext } from '@providers/GlobalContextProvider'
 import NextAuthProvider from '@providers/NextAuthProvider'
 import '@styles/globals.css'
 
@@ -9,9 +10,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <NextAuthProvider>
-      <html lang="en">
-        <body>{children}</body>
-      </html>
+      <GlobalContextProvider>
+         <html lang="en">
+          <body>{children}</body>
+        </html>
+      </GlobalContextProvider>
     </NextAuthProvider>
   )
 }

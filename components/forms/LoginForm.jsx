@@ -1,12 +1,12 @@
 'use client'
 import React, { useState } from 'react'
-import { signIn, useSession } from "next-auth/react";
-import { redirect, useRouter } from 'next/navigation';
+import { signIn } from "next-auth/react";
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({email:'', password:''})
   const router = useRouter()
-  const { data: session } = useSession();
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -18,9 +18,10 @@ const LoginForm = () => {
       })
 
       if (!response.error) { 
-        router.push('/dashboard')
+        console.log('Login success')
+        router.push('/timeline')
       } else {
-        console.error(response.error)
+        console.error('Login failed')
       }
     } catch (error) {
       console.error(error.message)
@@ -29,6 +30,11 @@ const LoginForm = () => {
   
   return (
     <form onSubmit={handleSubmit} className='mainForm'>
+      <div className='mainForm__group'>
+        <h1 className='mainForm__title'>Tasked!</h1>
+        <p className='mainForm__pitch'>Sign in to your account</p>
+        <p className='mainForm__link'>Don't have an account? <Link href={'/register'} className='text-orange-700'>Register</Link></p>
+      </div>
       <div className='mainForm__group'>
         <label htmlFor="email">Email</label>
         <input 
@@ -48,7 +54,10 @@ const LoginForm = () => {
           id="password" />
       </div>
       <div className='mainForm__group'>
-        <button type='submit'>Sign in</button>
+        <button type='submit'>Login</button>
+      </div>
+      <div className='mainForm__group'>
+        <p className='privacy__terms'>By signing in you agree with our privacy terms and conditions.</p>
       </div>
     </form>
   )
