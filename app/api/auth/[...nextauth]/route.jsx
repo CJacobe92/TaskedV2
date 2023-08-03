@@ -11,7 +11,7 @@ export const authOptions = {
             id: 'login',
             name: 'credentials',
             authorize: async(credentials) => {
-                const baseURL = `${process.env.API_URL}/auth`
+                const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/auth`
                 const payload = {
                     email: credentials.email,
                     password: credentials.password
@@ -40,7 +40,7 @@ export const authOptions = {
             id: 'register',
             name: 'credentials',
             authorize: async(credentials) => {
-                const baseURL = `${process.env.API_URL}/users`
+                const baseURL = `${process.env.NEXT_PUBLIC_API_URL}/users`
 
                 const payload = {
                     email: credentials.email,
